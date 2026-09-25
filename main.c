@@ -7,32 +7,42 @@
 
 int main()
 {
-	char input;
-	char clear;
+	srand((unsigned int)time(NULL));
 
-	srand(time(NULL));
+	char user_input;
+	int wrong_input;
 
-	do
+	wrong_input = 0;
+	while (to_upper_char(user_input) != 'Q')
 	{
-		printf("P - Play\n");
-		printf("Q - Quit\n");
+		clear_screen();
 
-		scanf(" %c", &input);
-		while((clear = getchar()) != '\n' && clear != EOF);
+		display_header();
+		display_menu(wrong_input);
 
-		lower_case(&input);
-
-		switch (input)
+		if (scanf(" %c", &user_input) != 1
+		|| (to_upper_char(user_input) != 'Q'
+		&&  to_upper_char(user_input) != 'P'))
 		{
-			case 'p':
-				play_game((rand() % 9) + 1);
+			clear_buffer();
+			wrong_input = 1;
+			continue;
+		}
+
+		clear_buffer();
+		wrong_input = 0;
+
+		switch (to_upper_char(user_input))
+		{
+			case 'P':
+//				play_game((rand() % 9) + 1);
+				printf("You selected %c - play the game!\n", to_upper_char(user_input));
 				break;
-			case 'q':
-				printf("Goodbye!\n");
+			case 'Q':
+				printf("You selected %c. Goodbye!\n", to_upper_char(user_input));
 				break;
 		}
 	}
-	while (input != 'q');
 
 	return 0;
 }
