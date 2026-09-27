@@ -11,6 +11,9 @@ int main()
 
 	char user_input;
 	int wrong_input;
+	int max_score;
+
+	max_score = 0;
 
 	wrong_input = 0;
 	while (to_upper_char(user_input) != 'Q')
@@ -35,11 +38,10 @@ int main()
 		switch (to_upper_char(user_input))
 		{
 			case 'P':
-//				play_game((rand() % 9) + 1);
-				printf("You selected %c - play the game!\n", to_upper_char(user_input));
+				play_game((rand() % 9) + 1);
 				break;
 			case 'Q':
-				printf("You selected %c. Goodbye!\n", to_upper_char(user_input));
+				quit_game(max_score);
 				break;
 		}
 	}

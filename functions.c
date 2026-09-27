@@ -42,3 +42,18 @@ void display_menu(int wrong_input)
 	? "Wrong input, try again"
 	: "Enter your choice");
 }
+void display_prompt(int wrong_input)
+{
+	/* Game Scores */
+
+	printf("%s\n","= *                 * =");
+	printf("%s\n","= * Score:          * =");
+	printf("%s\n","= * Attempts:       * =");
+	printf("\n");
+
+	/* Game Prompt */
+
+	printf(">> %s: ", (wrong_input)
+	? "Wrong input, try again"
+	: "Your guess (1-9)");
+}

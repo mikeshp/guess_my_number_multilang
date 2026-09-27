@@ -3,25 +3,42 @@
 #include "functions.h"
 #include "game.h"
 
-void play_game(int number)
+void play_game(int magic_number)
 {
-	int  guess = 0;
-	char clear;
+	int user_guess = 0;
+	int wrong_input;
 
-	while(!(guess >= 1 && guess <= 9))
+	wrong_input = 0;
+
+	while(!(user_guess >= 1 && user_guess <= 9))
 	{
-		printf("Guess my number (1-9):\n");
+		clear_screen();
 
-		scanf(" %d", &guess);
-		while((clear = getchar()) != '\n' && clear != EOF);
+		display_header();
+		display_prompt(wrong_input);
+
+		scanf(" %d", &user_guess);
+		clear_buffer();
+
+		wrong_input = 1;
 	}
 
-	if (guess == number)
+	clear_screen();
+
+	if (user_guess == magic_number)
 	{
 //		win;
+printf("win!\n");
 	}
 	else
 	{
 //		loss;
+printf("loss!\n");
 	}
+}
+void quit_game(int max_score)
+{
+	printf("Your maximum score: %3.2d\n",max_score);
+	printf("Goodbye!\n");
+	printf("\n");
 }
