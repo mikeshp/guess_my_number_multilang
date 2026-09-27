@@ -1,5 +1,5 @@
-#ifndef FUNCTIONS_C
-#define FUNCTIONS_C
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
 
 char to_upper_char(char);
 void clear_buffer();

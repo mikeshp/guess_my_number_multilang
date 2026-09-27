@@ -1,5 +1,5 @@
-#ifndef GAME_C
-#define GAME_C
+#ifndef GAME_H
+#define GAME_H
 
 void play_game(int);
 void quit_game(int);

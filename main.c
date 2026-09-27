@@ -13,9 +13,9 @@ int main()
 	int wrong_input;
 	int max_score;
 
-	max_score = 0;
-
+	max_score   = 0;
 	wrong_input = 0;
+
 	while (to_upper_char(user_input) != 'Q')
 	{
 		clear_screen();

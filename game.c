@@ -5,10 +5,11 @@
 
 void play_game(int magic_number)
 {
-	int user_guess = 0;
+	int user_guess;
 	int wrong_input;
 
 	wrong_input = 0;
+	user_guess  = 0;
 
 	while(!(user_guess >= 1 && user_guess <= 9))
 	{
@@ -27,15 +28,19 @@ void play_game(int magic_number)
 
 	if (user_guess == magic_number)
 	{
+		/* Update scores and return to main menu */
 //		win;
-printf("win!\n");
+		printf("DEBUG: win!\n");
 	}
 	else
 	{
+		/* Check attempts, if any left -> play_game again */
+		/* If no attempts left -> update scores, back to main menu */
 //		loss;
-printf("loss!\n");
+		printf("DEBUG: loss!\n");
 	}
 }
+
 void quit_game(int max_score)
 {
 	printf("Your maximum score: %3.2d\n",max_score);
