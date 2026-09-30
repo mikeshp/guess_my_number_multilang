@@ -1,9 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-
 #include "functions.h"
 #include "game.h"
+
+int max_score;
 
 int main()
 {
@@ -11,7 +12,6 @@ int main()
 
 	char user_input;
 	int wrong_input;
-	int max_score;
 
 	max_score   = 0;
 	wrong_input = 0;

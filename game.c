@@ -1,15 +1,24 @@
 #include <stdio.h>
-
 #include "functions.h"
 #include "game.h"
+
+#define MAX_ATTEMPTS 7
+
+extern int max_score;
+extern const int TAB;
+extern const char* PROMPT;
 
 void play_game(int magic_number)
 {
 	int user_guess;
 	int wrong_input;
+	int attempts_left;
+	int current_score;
 
-	wrong_input = 0;
-	user_guess  = 0;
+	wrong_input   = 0;
+	user_guess    = 0;
+	current_score = 0;
+	attempts_left = MAX_ATTEMPTS;
 
 	while(!(user_guess >= 1 && user_guess <= 9))
 	{
@@ -24,13 +33,21 @@ void play_game(int magic_number)
 		wrong_input = 1;
 	}
 
-	clear_screen();
+//	clear_screen();
 
 	if (user_guess == magic_number)
 	{
 		/* Update scores and return to main menu */
-//		win;
-		printf("DEBUG: win!\n");
+
+		current_score = current_score + 10;
+		if (current_score > max_score)
+		{
+			max_score = current_score;
+		}
+
+		clear_screen();
+		display_header();
+		// left here until separate header blocks from prompts and refactor
 	}
 	else
 	{
@@ -43,7 +60,7 @@ void play_game(int magic_number)
 
 void quit_game(int max_score)
 {
-	printf("Your maximum score: %3.2d\n",max_score);
-	printf("Goodbye!\n");
+	printf("%*sYour maximum score: %3.2d\n",TAB,"",max_score);
+	printf("%*sGoodbye!\n",TAB,"");
 	printf("\n");
 }

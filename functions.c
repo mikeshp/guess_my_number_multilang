@@ -1,6 +1,8 @@
 #include <stdio.h>
-
 #include "functions.h"
+
+const int TAB = 3;
+const char* PROMPT = ">>";
 
 char to_upper_char(char ch)
 {
@@ -44,9 +46,10 @@ void display_menu(int wrong_input)
 
 	/* Prompt */
 
-	printf(">> %s: ", (wrong_input)
+	printf("%*s%s:\n",TAB,"",(wrong_input)
 	? "Wrong input, try again"
 	: "Enter your choice");
+	printf("%s ",PROMPT);
 }
 
 void display_prompt(int wrong_input)
@@ -60,7 +63,8 @@ void display_prompt(int wrong_input)
 
 	/* Game Prompt */
 
-	printf(">> %s: ", (wrong_input)
+	printf("%*s%s:\n",TAB,"",(wrong_input)
 	? "Wrong input, try again"
 	: "Your guess (1-9)");
+	printf("%s ",PROMPT);
 }
