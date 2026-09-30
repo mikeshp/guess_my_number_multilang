@@ -64,7 +64,7 @@ void display_game_menu(int current_score, int attempts_left)
 	/* Game Scores */
 
 	printf("%s\n","= *                     * =");
-	printf("%s%3d%s\n","= *  Current Score:",current_score,"  * =");
+	printf("%s%3.2d%s\n","= *  Current Score:",current_score,"  * =");
 	printf("%s%3d%s\n","= *  Attempts Left:",attempts_left,"  * =");
 	printf("\n");
 }

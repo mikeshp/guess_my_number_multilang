@@ -2,7 +2,8 @@
 #include "functions.h"
 #include "game.h"
 
-#define MAX_ATTEMPTS 7
+#define MAX_ATTEMPTS 5
+#define INITIAL_SCORE 10
 
 extern int max_score;
 extern const int TAB;
@@ -18,7 +19,7 @@ void play_game(int magic_number)
 	int have_won;
 
 	wrong_guess   = 0;
-	current_score = 0;
+	current_score = INITIAL_SCORE;
 	attempts_left = MAX_ATTEMPTS;
 	have_won      = 0;
 
@@ -46,6 +47,7 @@ void play_game(int magic_number)
 
 		if (user_guess == magic_number)
 		{
+			current_score += 5;
 			have_won = 1;
 			break;
 		}
@@ -53,6 +55,8 @@ void play_game(int magic_number)
 		{
 //			printf("No, it isn't %d! %s\n",user_guess,
 //			attempts_left > 0 ? "Try again..." : "How sad.");
+			current_score = current_score <= 0 ?
+			0 : current_score - 1;
 			wrong_guess = 1;
 			continue;
 		}
