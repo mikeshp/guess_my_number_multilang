@@ -20,8 +20,9 @@ int main()
 	{
 		clear_screen();
 
-		display_header();
-		display_menu(wrong_input);
+		display_header(max_score);
+		display_main_menu();
+		prompt_main_menu(wrong_input);
 
 		if (scanf(" %c", &user_input) != 1
 		|| (to_upper_char(user_input) != 'Q'

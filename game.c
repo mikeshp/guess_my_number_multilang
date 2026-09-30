@@ -24,8 +24,9 @@ void play_game(int magic_number)
 	{
 		clear_screen();
 
-		display_header();
-		display_prompt(wrong_input);
+		display_header(max_score);
+		display_game_menu(current_score,attempts_left);
+		prompt_game_menu(wrong_input);
 
 		scanf(" %d", &user_guess);
 		clear_buffer();
@@ -46,7 +47,7 @@ void play_game(int magic_number)
 		}
 
 		clear_screen();
-		display_header();
+		display_header(max_score);
 		// left here until separate header blocks from prompts and refactor
 	}
 	else

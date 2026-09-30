@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include "functions.h"
 
-const int TAB = 3;
+const int TAB = 0;
 const char* PROMPT = ">>";
+
+/*** Supplemental Procedures ***/
 
 char to_upper_char(char ch)
 {
@@ -26,24 +28,29 @@ void clear_screen()
 	fflush(stdout);
 }
 
-void display_header()
+/*** UI Procedures ***/
+
+void display_header(int max_score)
 {
 	/* Header */
 
-	printf("%s\n","=======================");
-	printf("%s\n","= * Guess My Number * =");
-	printf("%s\n","= *                 * =");
+	printf("%s\n","===========================");
+	printf("%s\n","= * * * * * * * * * * * * =");
+	printf("%s\n","= *   Guess My Number   * =");
+	printf("%s%-3.2d%s\n","= *  Maximum Score: ",max_score," * =");
 }
 
-void display_menu(int wrong_input)
+void display_main_menu()
 {
 	/* Menu */
-
-	printf("%s\n","= *                 * =");
-	printf("%s\n","= *    P - Play     * =");
-	printf("%s\n","= *    Q - Quit     * =");
+	printf("%s\n","= *                     * =");
+	printf("%s\n","= *      P - Play       * =");
+	printf("%s\n","= *      Q - Quit       * =");
 	printf("\n");
+}
 
+void prompt_main_menu(int wrong_input)
+{
 	/* Prompt */
 
 	printf("%*s%s:\n",TAB,"",(wrong_input)
@@ -52,15 +59,18 @@ void display_menu(int wrong_input)
 	printf("%s ",PROMPT);
 }
 
-void display_prompt(int wrong_input)
+void display_game_menu(int current_score, int attempts_left)
 {
 	/* Game Scores */
 
-	printf("%s\n","= *                 * =");
-	printf("%s\n","= * Score:          * =");
-	printf("%s\n","= * Attempts:       * =");
+	printf("%s\n","= *                     * =");
+	printf("%s%3d%s\n","= *  Current Score:",current_score,"  * =");
+	printf("%s%3d%s\n","= *  Attempts Left:",attempts_left,"  * =");
 	printf("\n");
+}
 
+void prompt_game_menu(int wrong_input)
+{
 	/* Game Prompt */
 
 	printf("%*s%s:\n",TAB,"",(wrong_input)
