@@ -69,11 +69,14 @@ void display_game_menu(int current_score, int attempts_left)
 	printf("\n");
 }
 
-void prompt_game_menu(int wrong_input)
+void prompt_game_menu(int wrong_input, int wrong_guess)
 {
 	/* Game Prompt */
 
-	printf("%*s%s:\n",TAB,"",(wrong_input)
+	printf("%*s%s:\n",TAB,"",
+	(wrong_guess)
+	? "Wrong guess! (-1 score)" :
+	(wrong_input)
 	? "Wrong input, try again"
 	: "Your guess (1-9)");
 	printf("%s ",PROMPT);

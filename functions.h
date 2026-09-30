@@ -8,6 +8,6 @@ void display_header(int);
 void display_main_menu();
 void prompt_main_menu(int);
 void display_game_menu(int,int);
-void prompt_game_menu(int);
+void prompt_game_menu(int,int);
 
 #endif
