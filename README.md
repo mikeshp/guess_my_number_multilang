@@ -1,7 +1,7 @@
 # Guess My Number
 
-Simple "Guess My Number" CLI game implemented in multiple languages.
-This is a study project.
+Simple "Guess My Number" CLI game implemented in multiple languages.<br>
+This is a study project.<br>
 
 ---
 ## Objectives
