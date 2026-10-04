@@ -1,3 +1,5 @@
+## Makefile for "guess_my_number" version C
+
 CC   = gcc
 FLGS = -Wextra -Wall -Wconversion -Werror -Wstrict-prototypes
 NAME = guess_my_number_gcc
