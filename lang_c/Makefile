@@ -1,15 +1,18 @@
-CC     = gcc
-NAME   = guess_my_number
-FLAGS  = -Wextra -Wall -Wconversion -Werror
-SOURCE = functions.c game.c main.c
+CC   = gcc
+FLGS = -Wextra -Wall -Wconversion -Werror -Wstrict-prototypes
+NAME = guess_my_number_gcc
+SRCS = functions.c game.c main.c
 
+.PHONY: all
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(FLAGS) $(SOURCE) -o $(NAME)
+	$(CC) $(FLGS) $(SRCS) -o $(NAME)
 
-clean:
-	rm -f $(NAME) *.o
-
+.PHONY: run
 run: $(NAME)
 	./$(NAME)
+
+.PHONY: clean
+clean:
+	rm -f $(NAME) *.o

@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+
 #include "functions.h"
 #include "game.h"
 
 int max_score;
 
-int main()
+int main(void)
 {
 	srand((unsigned int)time(NULL));
 
