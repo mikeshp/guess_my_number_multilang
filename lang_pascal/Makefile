@@ -19,4 +19,4 @@ run: $(NAME)
 
 .PHONY: clean
 clean:
-	rm -rf .tmp *.o $(NAME)
+	rm -rf .tmp $(NAME)
