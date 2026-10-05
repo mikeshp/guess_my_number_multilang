@@ -5,10 +5,13 @@ SELECT ?= $(shell bash -c 'echo -e \
 		"Game variants (language implementation): \n \
 		\t 1 - C           \n \
 		\t 2 - Free Pascal \n \
+		                   \n \
+		\t 0 - Exit        \n \
 		" >&2; \
 		read -p "> Select game variant: " select; \
 		if   [ "$$select" = "1" ]; then echo "c"; \
 		elif [ "$$select" = "2" ]; then echo "pascal"; \
+		elif [ "$$select" = "0" ]; then echo "exit"; \
 		else echo "error"; \
 		fi ')
 
@@ -18,14 +21,17 @@ all:
 
 .PHONY: c
 c: lang_c
-	make -C lang_c
+	make -C lang_c run
 
 .PHONY: pascal
 pascal: lang_pascal
-	make -C lang_pascal
+	make -C lang_pascal run
 
 .PHONY: error
-error:
+error: exit
+
+.PHONY: exit
+exit:
 	exit
 
 .PHONY: clean
