@@ -9,7 +9,7 @@ SRCS = maintui.pas game.pas gameresolve.pas variables.pas
 .PHONY: all
 all: $(NAME)
 
-$(NAME): $(MAIN) $(SRCS)
+$(NAME): $(SRCS) $(MAIN)
 	mkdir -p .tmp
 	$(CC) $(FLGS) $(MAIN) -FU.tmp -o"$(NAME)"
 

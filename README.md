@@ -15,3 +15,7 @@ This is a study project.<br>
 * Maintain a multilanguage project with identical behaviour in all implementations.
 * Maintain a common Makefile that compiles and runs all different implementations.
 * Add more languages, compiled and interpreted (in command line mode).
+
+## Notes
+* Recalculate the window size and adjust coordinates for TUI on windowresize:
+can't do with CRT in Pascal, so require lower level access.
