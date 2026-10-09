@@ -17,5 +17,5 @@ This is a study project.<br>
 * Add more languages, compiled and interpreted (in command line mode).
 
 ## Notes
-* Recalculate the window size and adjust coordinates for TUI on windowresize:
-can't do with CRT in Pascal, so require lower level access.
+* Recalculate the window size and adjust coordinates for TUI on window resize:<br>
+&nbsp;&nbsp; can't do with CRT in Pascal, so require lower level access.
