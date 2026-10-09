@@ -18,4 +18,4 @@ This is a study project.<br>
 
 ## Notes
 * Recalculate the window size and adjust coordinates for TUI on window resize:<br>
-&nbsp; can't do with CRT in Pascal, so require lower level access.
+  can't do with CRT in Pascal, so require lower level access.
