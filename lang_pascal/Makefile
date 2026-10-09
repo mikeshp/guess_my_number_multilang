@@ -5,10 +5,9 @@ FLGS = -vwnh -vm11030,11031 -Seh -Co -Cr -Mobjfpc
 NAME = guess_my_number_fpc
 MAIN = main.pas
 SRCS = maintui.pas game.pas gameresolve.pas variables.pas
-OBJS = $(SRCS:.pas=.o)
 
 .PHONY: all
-all: $(NAME) $(MAIN) $(SRCS)
+all: $(NAME)
 
 $(NAME): $(MAIN) $(SRCS)
 	mkdir -p .tmp
