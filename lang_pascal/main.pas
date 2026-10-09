@@ -1,43 +1,46 @@
 program GuessMyNumber;
 
 uses
-	Crt,
-//	Variables,
-	MainTui;
-//	Game;
+//	Crt,
+	Game,
+	MainTui,
+	Variables;
 
-var
-//	loop     : boolean;
-	UserInput: char;
+//var
+//	UserInput: char;
 
-procedure PromptUserQuit;
-begin
-	write('>  Do you want to quit? (Yes/No) ');
-	read(UserInput);
-end;
+//procedure PromptUserQuit;
+//begin
+//	write('>  Do you want to quit? (Yes/No) ');
+//	read(UserInput);
+//end;
 
 begin
 
 	SwitchDisplayBuffer;
 
-//	loop := true;
-
 	repeat
-		ClearScreen;
-		UpdateTermCoords;
+		PlayTheGame;
 
-		MoveCursorHeader;
-		DisplayHeader;
+		if IsFirstGame then
+		begin
+			IsFirstGame := false;
+		end;
 
-		MoveCursorContent;
-		writeln('Hello!');
-		writeln('How are you doing?');
+		repeat
+			ClearScreen;
+			UpdateTermCoords;
 
-		MoveCursorPrompt;
-//		PromptUserPause;
-		PromptUserQuit;
+			MoveCursorHeader;
+			DisplayHeader;
 
-	until upcase(UserInput) = 'Y';
+			MoveCursorPrompt;
+			PromptUserPlayAgain;
+
+		until (upcase(UserInput) = 'Y')
+		   or (upcase(UserInput) = 'N');
+
+	until upcase(UserInput) = 'N';
 
 	SwitchDisplayBack;
 

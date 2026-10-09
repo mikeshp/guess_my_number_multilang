@@ -1,10 +1,15 @@
-Unit	Variables;
+unit Variables;
 
-Interface
-Var
-
+interface
+const
+	NumberOfAttempts = 6;
+	BadGuessScore    = 3;
+	WinGuessScore    = 9;
+var
+	CurrentScore :integer = 0;
 	TotalScore   :integer = 0;
-	PlayedBefore :boolean = false;
+	IsFirstGame  :boolean = true;
+	UserInput    :char;
 
-Implementation
-End.
+implementation
+end.

@@ -3,19 +3,23 @@ unit MainTui;
 interface
 
 uses
+	Crt,
 	BaseUnix,
-	Crt;
-//	Variables;
+	Variables;
 
 procedure SwitchDisplayBuffer;
 procedure SwitchDisplayBack;
 procedure PromptUserPause;
+procedure PromptUserPlayAgain;
 procedure ClearScreen;
 procedure UpdateTermCoords;
 procedure MoveCursorHeader;
 procedure MoveCursorContent;
 procedure MoveCursorPrompt;
 procedure InfoWindowSize;
+procedure InfoGameHeader;
+procedure InfoGameRules;
+procedure InfoGameScores;
 procedure DisplayHeader;
 procedure FillTheLine(symbol:char);
 
@@ -104,18 +108,46 @@ end;
 procedure PromptUserPause;
 begin
 //	writeln;
-	write(PromptTab,'Press any key to continue...');
+	write(PromptTab,'Press any key to continue... ');
 //	write('Press <Enter> to continue...');
 //	readln;
 	readkey;
 end;
 
+procedure PromptUserPlayAgain;
+begin
+	write(PromptTab,'Do you want to play again? (Y/n) ');
+	read(UserInput);
+end;
+
 procedure DisplayHeader;
+begin
+	InfoGameHeader;
+	FillTheLine('.');
+	InfoGameRules;
+	FillTheLine('.');
+//	InfoWindowSize;
+//	FillTheLine('.');
+	InfoGameScores;
+end;
+
+procedure InfoGameHeader;
 begin
 	writeln('Guess My Number!');
 	writeln('Written in Free Pascal.');
-	FillTheLine('.');
-	InfoWindowSize;
+end;
+
+procedure InfoGameScores;
+begin
+	writeln('Current Scores:',CurrentScore:3,Tab,'Total Scores:',TotalScore:3);
+end;
+
+procedure InfoGameRules;
+begin
+	writeln('You must guess a secret number, from 1 to 10.');
+	writeln('You have only ',NumberOfAttempts,' attempts!');
+	writeln('For every wrong attempt you''re charged ',BadGuessScore,' scores.');
+	writeln('For the correct guess you get plus ',WinGuessScore,' scores.');
 end;
 
 procedure FillTheLine(symbol:char);
