@@ -8,7 +8,7 @@ uses
 
 procedure PlayTheGame;
 procedure DisplayGameResolve;
-procedure DisplayGuess(WasBadGuess:boolean;AttemptsLeft:integer);
+procedure DisplayGuess(WasBadGuess:integer;AttemptsLeft:integer);
 
 implementation
 
@@ -19,11 +19,12 @@ var
 	UserGuess    :integer;
 	InputError   :integer;
 	AttemptsLeft :integer;
-	WasBadGuess  :boolean;
+//	WasBadGuess  :boolean;
 begin
 	SecretNumber := random(10) + 1;
+	UserGuess    := SecretNumber;
 	AttemptsLeft := NumberOfAttempts;
-	WasBadGuess  := false;
+//	WasBadGuess  := false;
 	WasVictory   := false;
 
 	repeat
@@ -34,9 +35,9 @@ begin
 		DisplayHeader;
 
 		MoveCursorContent;
-		DisplayGuess(WasBadGuess,AttemptsLeft);
+		DisplayGuess(UserGuess-SecretNumber,AttemptsLeft);
 
-		if WasBadGuess then WasBadGuess := false;
+//		if WasBadGuess then WasBadGuess := false;
 
 		MoveCursorPrompt;
 		PromptUserGuess;
@@ -62,10 +63,7 @@ begin
 		end
 		else
 		begin
-			// Should add high/low check,
-			// send it to the feedback
-			// to implement reaction
-			WasBadGuess  := true;
+//			WasBadGuess  := true;
 			CurrentScore -= BadGuessScore;
 
 			if CurrentScore <= 0 then CurrentScore := 0;
@@ -80,33 +78,32 @@ begin
 	// back to main loop, game resolve from there
 end;
 
-procedure DisplayGuess(WasBadGuess:boolean;AttemptsLeft:integer);
+procedure DisplayGuess(WasBadGuess:integer;AttemptsLeft:integer);
+var
+	i :integer;
+	y :integer;
 begin
-	if WasBadGuess
-	then writeln('That was bad guess!')
-	else writeln('Now try and guess!');
+	i := random(3);
+	y := random(3);
+
+	if      WasBadGuess > 0 then writeln(SayBadGuess[i],', ',SayTooHigh[y],'!')
+	else if WasBadGuess < 0 then writeln(SayBadGuess[i],', ',SayTooLow[y],'!')
+	else    writeln(SayLetsTry[i],'!');
+
 	writeln('Attempts left:',AttemptsLeft:2);
 end;
 
 procedure DisplayGameResolve;
 var
-	Victory : array[1..4] of string
-		= ('Hooray','Bingo','Fascinating','Splendid');
-	WinLine : array[1..3] of string
-		= ('have been victorious','nailed it','managed this');
-	Loss    : array[1..4] of string
-		= ('How sad','Unfortunatelly','What a shame','Oh no');
-	LossLine: array[1..3] of string
-		= ('couldn''t guess the number','failed','didn''t guess');
 	i :integer;
 	y :integer;
 begin
-	i := random(4) + 1;
-	y := random(3) + 1;
+	i := random(4);
+	y := random(3);
 
 	if WasVictory
-	then writeln(Victory[i],', you ',WinLine[y],'!')
-	else writeln(Loss[i],', you ',LossLine[y],'.');
+	then writeln(SayVictory[i],', you ',SayWinLine[y],'!')
+	else writeln(SayLoss[i],', you ',SayLossLine[y],'.');
 
 	writeln('Your score record is:',MaximumScore:3);
 

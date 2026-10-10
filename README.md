@@ -15,6 +15,7 @@ This is a study project.<br>
 * Maintain a multilanguage project with identical behaviour in all implementations.
 * Maintain a common Makefile that compiles and runs all different implementations.
 * Add more languages, compiled and interpreted (in command line mode).
+* Add colors to the TUI
 
 ## Notes
 * **Pascal** to fix bug: the window size and adjust coordinates for TUI on window resize:<br>
