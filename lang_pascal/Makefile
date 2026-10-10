@@ -1,17 +1,17 @@
 ## Makefile for "guess_my_number" version Free Pascal
 
 CC   = fpc
-FLGS = -vwnh -vm11030,11031 -Seh -Co -Cr
+FLGS = -vwnh -vm11030,11031 -Seh -Co -Cr -Mobjfpc
 NAME = guess_my_number_fpc
-SRCS = guess_my_number.pas
-OBJS = $(SRCS:.pas=.o)
+MAIN = main.pas
+SRCS = maintui.pas game.pas variables.pas
 
 .PHONY: all
 all: $(NAME)
 
-$(NAME): $(SRCS)
+$(NAME): $(SRCS) $(MAIN)
 	mkdir -p .tmp
-	$(CC) $(FLGS) $(SRCS) -FU.tmp -o"$(NAME)"
+	$(CC) $(FLGS) $(MAIN) -FU.tmp -o"$(NAME)"
 
 .PHONY: run
 run: $(NAME)
