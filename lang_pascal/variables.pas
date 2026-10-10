@@ -7,9 +7,10 @@ const
 	WinGuessScore    = 9;
 var
 	CurrentScore :integer = 0;
-	TotalScore   :integer = 0;
+	MaximumScore :integer = 0;
 	IsFirstGame  :boolean = true;
-	UserInput    :char;
+	WasVictory   :boolean = false;
+	WantToQuit   :boolean = false;
 
 implementation
 end.

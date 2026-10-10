@@ -10,6 +10,7 @@ uses
 procedure SwitchDisplayBuffer;
 procedure SwitchDisplayBack;
 procedure PromptUserPause;
+procedure PromptUserGuess;
 procedure PromptUserPlayAgain;
 procedure ClearScreen;
 procedure UpdateTermCoords;
@@ -30,6 +31,7 @@ const
 	AltBufferOff  = #27'[?1049l';
 	Tab           = #9;
 	PromptTab     = '>  ';
+	InfoTab       = '#  ';
 	GapHeader     = 0;
 	GapContent    = 3;
 	GapPrompt     = 0;
@@ -105,19 +107,24 @@ begin
 	fpwrite(1,pchar(AltBufferOff),length(AltBufferOff));
 end;
 
+procedure PromptUserGuess;
+begin
+	write(PromptTab,'Enter your guess (1-10): ');
+end;
+
 procedure PromptUserPause;
 begin
 //	writeln;
 	write(PromptTab,'Press any key to continue... ');
 //	write('Press <Enter> to continue...');
 //	readln;
-	readkey;
+//	readkey;
 end;
 
 procedure PromptUserPlayAgain;
 begin
 	write(PromptTab,'Do you want to play again? (Y/n) ');
-	read(UserInput);
+//	read(UserInput);
 end;
 
 procedure DisplayHeader;
@@ -133,21 +140,23 @@ end;
 
 procedure InfoGameHeader;
 begin
-	writeln('Guess My Number!');
-	writeln('Written in Free Pascal.');
+	writeln(InfoTab,'Guess My Number!');
+	writeln(InfoTab,'Written in Free Pascal.');
 end;
 
 procedure InfoGameScores;
 begin
-	writeln('Current Scores:',CurrentScore:3,Tab,'Total Scores:',TotalScore:3);
+	writeln('Current Scores:',CurrentScore:3,Tab,'Maximum Scores:',MaximumScore:3);
 end;
 
 procedure InfoGameRules;
 begin
-	writeln('You must guess a secret number, from 1 to 10.');
-	writeln('You have only ',NumberOfAttempts,' attempts!');
-	writeln('For every wrong attempt you''re charged ',BadGuessScore,' scores.');
-	writeln('For the correct guess you get plus ',WinGuessScore,' scores.');
+	writeln(InfoTab,'You must guess a secret number, from 1 to 10.');
+	writeln(InfoTab,'You have only ',NumberOfAttempts,' attempts!');
+	writeln(InfoTab,'For every wrong attempt you''re charged ',BadGuessScore,' scores.');
+	writeln(InfoTab,'For the correct guess you get plus ',WinGuessScore,' scores.');
+	writeln;
+	writeln(InfoTab,'Enter ''Q'' to exit.');
 end;
 
 procedure FillTheLine(symbol:char);

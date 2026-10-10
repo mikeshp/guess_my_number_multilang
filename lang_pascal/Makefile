@@ -4,7 +4,7 @@ CC   = fpc
 FLGS = -vwnh -vm11030,11031 -Seh -Co -Cr -Mobjfpc
 NAME = guess_my_number_fpc
 MAIN = main.pas
-SRCS = maintui.pas game.pas gameresolve.pas variables.pas
+SRCS = maintui.pas game.pas variables.pas
 
 .PHONY: all
 all: $(NAME)

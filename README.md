@@ -17,8 +17,10 @@ This is a study project.<br>
 * Add more languages, compiled and interpreted (in command line mode).
 
 ## Notes
-* Recalculate the window size and adjust coordinates for TUI on window resize:<br>
+* **Pascal** to fix bug: the window size and adjust coordinates for TUI on window resize:<br>
   can't do with CRT in Pascal, so require lower level access.
+* **Pascal** to fix bugs: bad (non integer) input leads to crash, line shift on empty Enter.
+~~* **Pascal** to add feature: force quit on Q (return screen buffer back).~~
 
 ---
 ## License

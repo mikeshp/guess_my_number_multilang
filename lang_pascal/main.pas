@@ -1,22 +1,15 @@
 program GuessMyNumber;
 
 uses
-//	Crt,
 	Game,
 	MainTui,
 	Variables;
 
-//var
-//	UserInput: char;
-
-//procedure PromptUserQuit;
-//begin
-//	write('>  Do you want to quit? (Yes/No) ');
-//	read(UserInput);
-//end;
+var
+	UserInput:char;
 
 begin
-
+	Randomize;
 	SwitchDisplayBuffer;
 
 	repeat
@@ -27,6 +20,8 @@ begin
 			IsFirstGame := false;
 		end;
 
+		if WantToQuit then break;
+
 		repeat
 			ClearScreen;
 			UpdateTermCoords;
@@ -34,14 +29,21 @@ begin
 			MoveCursorHeader;
 			DisplayHeader;
 
+			MoveCursorContent;
+			DisplayGameResolve;
+
 			MoveCursorPrompt;
 			PromptUserPlayAgain;
+			readln(UserInput);
+			// should loop this readln check alone,
+			// return cursor to prompt and clear the line,
+			// then prompt again. so GameResolve won't trigger
 
 		until (upcase(UserInput) = 'Y')
 		   or (upcase(UserInput) = 'N');
 
 	until upcase(UserInput) = 'N';
 
+//	DisplayHallOfFame;
 	SwitchDisplayBack;
-
 end.
